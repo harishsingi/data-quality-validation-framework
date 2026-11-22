@@ -1,0 +1,6 @@
+[project]
+name = "data-quality-validation-framework"
+version = "0.1.0"
+description = "Rule-driven data quality validation: schema, null, duplicate, range, and freshness checks, with quarantine and pass/fail reporting"
+requires-python = ">=3.10"
+dependencies = ["pyyaml"]

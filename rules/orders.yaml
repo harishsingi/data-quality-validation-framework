@@ -1,0 +1,6 @@
+required_columns: [id, customer_id, amount, updated_at]
+not_null: [customer_id, amount]
+unique: [id]
+range:
+  amount: [0, 10000]
+expected_date: "2026-11-22"
