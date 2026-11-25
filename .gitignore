@@ -1,3 +1,9 @@
+# Generated outputs (regenerate with dq-generate / dq-validate)
 data/records.csv
+data/customers.csv
 data/quarantine.csv
+data/clean.csv
+data/report.json
 __pycache__/
+.venv/
+*.egg-info/

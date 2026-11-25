@@ -1,6 +1,33 @@
+# Example rule config for the synthetic orders-like dataset.
+# Rules are config, not code: change the checks here, no code change needed.
+# Every column a rule names must be listed in required_columns.
+# See src/dq/config.py for the full schema and validation rules.
+
 required_columns: [id, customer_id, amount, updated_at]
+
+# Per-column types, checked on every non-empty value.
+# Supported: int, float, str, datetime (ISO-8601).
+column_types:
+  id: int
+  customer_id: str
+  amount: float
+  updated_at: datetime
+
 not_null: [customer_id, amount]
 unique: [id]
+
+# Inclusive numeric bounds.
 range:
   amount: [0, 10000]
+
+# Referential check: customer_id must exist in the customer master list.
+# The file is resolved against this config file's directory first, then the
+# current working directory. Generate it with: dq-generate
+reference:
+  customer_id:
+    file: data/customers.csv
+    column: customer_id
+
+# Freshness: the latest updated_at must be on/after this date (YYYY-MM-DD).
+# The generator's newest clean row lands exactly on this date.
 expected_date: "2026-11-22"
